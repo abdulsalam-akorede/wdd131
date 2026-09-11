@@ -92,3 +92,11 @@ main figure figcaption {
     align-items: center;
     justify-content: space-between;
 }
+
+footer {
+    background-color: #12355B;
+    color: white;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    padding: 0.75rem;
+}
