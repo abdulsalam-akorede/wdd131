@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WDD 131 | Country Page</title>
+    <meta name="author" content="Abdulsalam Akorede Oke">
+    <meta name="description" content="Learn about Nigeria, its culture, location, and weather conditions.">
+    <link rel="stylesheet" href="styles/place.css">
+    <link rel="stylesheet" href="styles/place-large.css">
+    <script src="scripts/place.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Nigeria</h1>
+    </header>
+
+    <main>
+        <section class="hero">
+            <picture>
+                <source media="(min-width: 768px)" srcset="images/nigeria-large.webp">
+                <img src="images/nigeria-small.webp" alt="Beautiful landscape in Nigeria">
+            </picture>
+        </section>
+
+        <section class="about">
+            <h2>Data</h2>
+
+            <p>
+                Nigeria is a country in West Africa known for its diverse cultures,
+                languages, traditions, and natural landscapes.
+            </p>
+
+            <div class="country-data">
+                <p><strong>Capital:</strong> Abuja</p>
+                <p><strong>Population:</strong> Over 200 million</p>
+                <p><strong>Language:</strong> English</p>
+                <p><strong>Currency:</strong> Nigerian Naira (₦)</p>
+                <p><strong>Region:</strong> West Africa</p>
+            </div>
+        </section>
+
+        <section class="weather">
+            <h2>Weather</h2>
+
+            <div class="weather-content">
+                <img src="images/weather.svg" alt="Partly cloudy weather">
+
+                <div>
+                    <p><strong>Temperature:</strong> 29 °C</p>
+                    <p><strong>Conditions:</strong> Partly Cloudy</p>
+                    <p><strong>Wind:</strong> 12 km/h</p>
+                    <p><strong>Wind Chill:</strong> <span id="windchill"></span></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>
+            &copy; <span id="currentyear"></span> Abdulsalam Akorede Oke | Nigeria
+        </p>
+        <p id="lastModified"></p>
+    </footer>
+</body>
+</html>
