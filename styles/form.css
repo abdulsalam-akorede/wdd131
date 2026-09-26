@@ -1,0 +1,136 @@
+
+
+:root {
+    --primary-color: #12355b;
+    --secondary-color: #20a36a;
+    --light-color: #f7f9fc;
+    --dark-color: #17212a;
+    --border-color: #cccccc;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    color: var(--dark-color);
+    background-color: var(--light-color);
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+header h1 {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+}
+
+main {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+form {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+label,
+legend {
+    font-weight: 500;
+}
+
+form > label,
+form > input,
+form > select,
+form > textarea {
+    display: block;
+    width: 100%;
+}
+
+select,
+input[type="date"],
+input[type="text"],
+textarea {
+    margin-top: 0.5rem;
+    margin-bottom: 1.25rem;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font: inherit;
+}
+
+fieldset {
+    margin-bottom: 1.25rem;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.rating {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.rating label {
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.rating input {
+    margin-right: 0.5rem;
+}
+
+fieldset label {
+    display: block;
+    margin: 0.6rem 0;
+}
+
+fieldset input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--secondary-color);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    opacity: 0.9;
+}
+
+footer {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+}
+
+footer p {
+    margin: 0.4rem;
+}
+

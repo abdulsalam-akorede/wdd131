@@ -1,0 +1,13 @@
+@media screen and (min-width: 600px) {
+    main {
+        padding: 0 2rem;
+    }
+
+    form {
+        padding: 2rem;
+    }
+
+    .rating {
+        gap: 1rem;
+    }
+}
