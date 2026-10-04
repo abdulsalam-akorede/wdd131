@@ -1,4 +1,4 @@
-/* Crestline color variables */
+/* My color variables */
 :root {
   --navy: #0B1F3B;
   --gold: #C9A326;
@@ -48,7 +48,7 @@ img {
   color: var(--navy);
 }
 
-/* ---------- NAV (mobile first) ---------- */
+/* ---------- NAV (mobile) ---------- */
 #site-header {
   background-color: var(--navy);
 }
@@ -110,7 +110,7 @@ img {
   color: var(--gold);
 }
 
-/* ---------- SECTIONS (mobile first) ---------- */
+/* ---------- SECTIONS (mobile) ---------- */
 main {
   max-width: 1000px;
   margin: 0 auto;
@@ -168,12 +168,6 @@ section {
   background-color: var(--mist);
   border-radius: 6px;
   overflow: hidden;
-}
-
-.project-card img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
 }
 
 .project-card h3 {
@@ -373,8 +367,9 @@ section {
 
 .project-card img {
   width: 100%;
-  height: 180px;
-  object-fit: cover;
+  height: 250px;
+  object-fit: contain;
+  background-color: var(--white);
 }
 
 .project-card-content {
@@ -410,8 +405,6 @@ section {
 .project-link:hover {
   color: var(--gold);
 }
-
-
 
 /* ---------- CONTACT PAGE ---------- */
 
