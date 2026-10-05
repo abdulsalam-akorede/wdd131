@@ -15,7 +15,7 @@ const projects = [
     description: "Full brand identity buildout including logo, color system, and print materials.",
     details: "A branding project focused on creating a consistent visual identity for Crestline Brands, including logo development, color selection, promotional materials, and brand presentation.",
     tools: "CorelDRAW, Photoshop",
-    image: "images/crestline.png"
+    image: "images/crestline.webp"
   },
 
   {
@@ -25,7 +25,7 @@ const projects = [
     description: "Brand identity for a digital-skills empowerment initiative.",
     details: "A digital empowerment project designed to help students, graduates, job seekers, entrepreneurs, freelancers, and professionals develop practical digital skills.",
     tools: "CorelDRAW, Photoshop",
-    image: "images/project-go.png"
+    image: "images/project-go.webp"
   },
 
   {
@@ -35,7 +35,7 @@ const projects = [
     description: "Responsive websites built with semantic HTML, CSS, and vanilla JavaScript.",
     details: "A collection of projects created while studying Dynamic Web Fundamentals, including responsive layouts, JavaScript functionality, forms, DOM manipulation, and interactive web pages.",
     tools: "HTML, CSS, JavaScript",
-    image: "images/wdd131.png"
+    image: "images/wdd131.webp"
   }
 ];
 
