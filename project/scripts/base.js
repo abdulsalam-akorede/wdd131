@@ -54,7 +54,7 @@ function buildNav(activePage) {
 
   header.innerHTML = `
     <div class="nav-container">
-      <a href="index.html" class="logo">Abdulsalam Akorede</a>
+      <a href="index.html" class="logo">Abdulsalam Oke</a>
       <button id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation" aria-expanded = "false" >&#9776;</button>
       <nav id="main-nav">
         <ul>${linkItems}</ul>
