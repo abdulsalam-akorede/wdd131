@@ -101,7 +101,7 @@ function renderFeaturedProjects() {
     .map(
       (project) => `
       <div class="project-card">
-        <img src="${project.image}" alt="${project.name}">
+        <img src="${project.image}" alt="${project.name}" loading="lazy">
         <h3>${project.name}</h3>
         <p>${project.description}</p>
       </div>
@@ -260,7 +260,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderFeaturedProjects();
   renderProjects();
   setupProjectFilters();
-  setupContactForm();
   setupProjectModal();
   trackProjectVisits();
 });
