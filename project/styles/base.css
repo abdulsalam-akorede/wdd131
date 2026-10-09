@@ -562,3 +562,55 @@ section {
   font-size: 0.9rem;
   font-weight: 500;
 }
+
+
+/* References page */
+
+.references-page {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 3rem;
+}
+
+.references-page .page-intro {
+    margin-bottom: 2rem;
+}
+
+.references-page h1,
+.references-page h2 {
+    font-family: "Poppins", sans-serif;
+    color: var(--navy);
+}
+
+.references-page h1 {
+    margin-bottom: 1rem;
+}
+
+.references-content {
+    line-height: 1.7;
+}
+
+.references-content h2 {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.references-content ul {
+    padding-left: 1.5rem;
+}
+
+.references-content li {
+    margin-bottom: 0.75rem;
+}
+
+.references-content a {
+    color: var(--navy);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.references-content a:hover,
+.references-content a:focus {
+    color: var(--gold);
+}
