@@ -4,8 +4,7 @@ const navLinks = [
   { label: "Home", href: "index.html", page: "home" },
   { label: "About", href: "about.html", page: "about" },
   { label: "Projects", href: "projects.html", page: "projects" },
-  { label: "Contact", href: "contact.html", page: "contact" },
-  { label: "References", href: "references.html", page: "references" }
+  { label: "Contact", href: "contact.html", page: "contact" }
 ];
 
 const projects = [
@@ -79,11 +78,15 @@ function buildNav(activePage) {
 // ---------- Footer ----------
 
 function buildFooter() {
-  const footer = document.querySelector("#site-footer");
-  if (!footer) return;
+    const footer = document.querySelector("#site-footer");
 
-  const year = new Date().getFullYear();
-  footer.innerHTML = `<p>&copy; ${year} Abdulsalam Akorede</p>`;
+    if (!footer) return;
+
+    footer.innerHTML = `
+        <p>&copy; ${new Date().getFullYear()} Abdulsalam Oke</p>
+        <a href="references.html">References</a>
+    `;
+
 }
 
 // ---------- Featured projects (home page) ----------
