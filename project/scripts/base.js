@@ -168,26 +168,32 @@ function setupProjectFilters() {
 }
 
 
-function setupContactForm() {
-  const form = document.querySelector("#contact-form");
-  const message = document.querySelector("#form-message");
 
-  if (!form || !message) return;
+const contactForm = document.querySelector("#contact-form");
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
+if (contactForm) {
+    contactForm.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-    const name = document.querySelector("#name").value.trim();
+        const name = document.querySelector("#name").value.trim();
+        const email = document.querySelector("#email").value.trim();
+        const subject = document.querySelector("#subject").value.trim();
+        const message = document.querySelector("#message").value.trim();
 
-    if (name === "") {
-      message.textContent = "Please enter your name.";
-      return;
-    }
+        const emailSubject = encodeURIComponent(subject);
+        const emailBody = encodeURIComponent(
+            `Name: ${name}\n` +
+            `Email: ${email}\n\n` +
+            `${message}`
+        );
 
-    message.textContent = `Thank you, ${name}! Your message has been received.`;
+        const gmailUrl =
+            `https://mail.google.com/mail/?view=cm&fs=1` +
+            `&to=akoredeabdulsalam330@gmail.com` +
+            `&su=${emailSubject}&body=${emailBody}`;
 
-    form.reset();
-  });
+        window.open(gmailUrl, "_blank");
+    });
 }
 
 
