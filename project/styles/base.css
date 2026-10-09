@@ -615,7 +615,9 @@ section {
     color: var(--gold);
 }
 
-#site-footer a {
+
+#site-footer a,
+#site-footer a:visited {
     color: #FFFFFF;
     text-decoration: underline;
     text-underline-offset: 3px;
