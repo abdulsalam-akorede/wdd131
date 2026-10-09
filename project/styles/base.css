@@ -614,3 +614,14 @@ section {
 .references-content a:focus {
     color: var(--gold);
 }
+
+#site-footer a {
+    color: #FFFFFF;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+#site-footer a:hover,
+#site-footer a:focus {
+    color: var(--gold);
+}
