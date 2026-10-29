@@ -24,47 +24,41 @@
     img.addEventListener('error', mark);
   });
 
-  // Contact form
+  // Contact form: sends the message through Web3Forms without leaving the page
   var form = document.getElementById('contact-form');
   if (!form) return;
   var status = document.getElementById('form-status');
-
-  function setError(field, message) {
-    var wrap = field.closest('.field');
-    wrap.classList.toggle('has-error', Boolean(message));
-    wrap.querySelector('.error').textContent = message || '';
-  }
-
-  function validate(field) {
-    var value = field.value.trim();
-    var message = '';
-    if (field.required && !value) message = 'This field is required.';
-    else if (field.type === 'email' && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) message = 'Enter a valid email address.';
-    else if (field.name === 'message' && value && value.length < 10) message = 'Please write at least 10 characters.';
-    setError(field, message);
-    return !message;
-  }
-
-  var fields = form.querySelectorAll('input, select, textarea');
-  fields.forEach(function (f) {
-    f.addEventListener('blur', function () { validate(f); });
-    f.addEventListener('input', function () { if (f.closest('.field').classList.contains('has-error')) validate(f); });
-  });
+  var button = form.querySelector('button[type="submit"]');
+  var WHATSAPP = 'https://wa.me/2348128460590';
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var ok = true;
-    fields.forEach(function (f) { if (!validate(f)) ok = false; });
-    if (!ok) { status.textContent = ''; return; }
+    if (!form.checkValidity()) { form.reportValidity(); return; }
 
-    // Opens WhatsApp with the order details. Replace the number below (country code, no + or spaces).
-    var WHATSAPP_NUMBER = '234XXXXXXXXXX';
-    var d = new FormData(form);
-    var text = 'Hello Olam\'s Apparel, my name is ' + d.get('name') +
-      '. I am interested in: ' + d.get('interest') + '.\n' + d.get('message') +
-      '\nEmail: ' + d.get('email');
-    status.textContent = 'Thank you. Opening WhatsApp to send your message.';
-    window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
-    form.reset();
+    var original = button.textContent;
+    button.disabled = true;
+    button.textContent = 'Sending...';
+    status.style.color = '';
+    status.textContent = '';
+
+    fetch(form.action, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(Object.fromEntries(new FormData(form)))
+    })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (!data.success) throw new Error(data.message || 'Failed');
+        status.textContent = 'Thank you. Your message has been sent and we will reply soon.';
+        form.reset();
+      })
+      .catch(function () {
+        status.style.color = '#a93226';
+        status.innerHTML = 'Your message could not be sent. Please message us on <a href="' + WHATSAPP + '">WhatsApp</a> instead.';
+      })
+      .finally(function () {
+        button.disabled = false;
+        button.textContent = original;
+      });
   });
 })();
