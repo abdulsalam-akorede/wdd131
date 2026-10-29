@@ -1,18 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <title>Contact | Olam's Apparel</title>
   <meta name="description" content="Contact Olams Apparel to order agbada, caftans, casuals and two-piece sets.">
   <meta name="theme-color" content="#12355B">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="styles/style.css">
 </head>
 
@@ -24,13 +20,7 @@
       <a class="logo" href="index.html" aria-label="Olam's Apparel Home">
         <img src="images/logo.jpeg" alt="Olam's Apparel">
       </a>
-
-      <button class="nav-toggle"
-              aria-expanded="false"
-              aria-controls="nav-menu">
-        Menu
-      </button>
-
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
       <ul class="nav-list" id="nav-menu">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
@@ -50,87 +40,35 @@
 
     <section class="section">
       <div class="wrap contact-grid">
-
         <div>
           <h2>Reach Olams Apparel</h2>
           <p>Message us on WhatsApp for the fastest reply, or fill in the form.</p>
-
           <ul class="contact-list">
-            <li>
-              <strong>WhatsApp</strong>
-              <a href="https://wa.me/2348128460590">
-                +2348128460590
-              </a>
-            </li>
-
-            <li>
-              <strong>Email</strong>
-              <a href="mailto:mubarakolodan@gmail.com">
-                mubarakolodan@gmail.com
-              </a>
-            </li>
-
-            <li>
-              <strong>Instagram</strong>
-              <a href="https://instagram.com/olamsapparel"
-                 target="_blank"
-                 rel="noopener noreferrer">
-                @olamsapparel
-              </a>
-            </li>
-
-            <li>
-              <strong>Location</strong>
-              9 Modinat Rasakiyat, Baruwa, Lagos 100278.
-              Global and quick delivery available.
-            </li>
+            <li><strong>WhatsApp</strong><a href="https://wa.me/2348128460590">+2348128460590</a></li>
+            <li><strong>Email</strong><a href="mailto:mubarakolodan@gmail.com">mubarakolodan@gmail.com</a></li>
+            <li><strong>Instagram</strong><a href="https://instagram.com/olamsapparel" target="_blank" rel="noopener noreferrer">@olamsapparel</a></li>
+            <li><strong>Location</strong>9 Modinat Rasakiyat, Baruwa, Lagos 100278. Global and quick delivery available.</li>
           </ul>
         </div>
 
-        <!-- CONTACT FORM -->
-        <form
-          class="form"
-          id="contact-form"
-          action="https://formsubmit.co/mubarakolodan@gmail.com"
-          method="POST"
-        >
+        <!-- CONTACT FORM (sent through Web3Forms) -->
+        <form class="form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
 
-          <!-- Email subject -->
-          <input
-            type="hidden"
-            name="_subject"
-            value="New Customer Inquiry - Olam's Apparel"
-          >
-
-          <!-- Email format -->
-          <input
-            type="hidden"
-            name="_template"
-            value="table"
-          >
+          <!-- Paste your Web3Forms access key here -->
+          <input type="hidden" name="access_key" value="20ec30b2-d09b-493d-9c6f-8b98f70509eb">
+          <input type="hidden" name="subject" value="New Customer Inquiry - Olam's Apparel">
+          <input type="hidden" name="from_name" value="Olam's Apparel Website">
+          <!-- Spam trap: leave hidden and empty -->
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
 
           <div class="field">
             <label for="name">Full name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              autocomplete="name"
-              placeholder="Enter your full name"
-              required
-            >
+            <input type="text" id="name" name="name" autocomplete="name" placeholder="Enter your full name" required>
           </div>
 
           <div class="field">
             <label for="email">Email address</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              autocomplete="email"
-              placeholder="Enter your email address"
-              required
-            >
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="Enter your email address" required>
           </div>
 
           <div class="field">
@@ -141,29 +79,20 @@
               <option value="Caftans">Caftans</option>
               <option value="Casuals">Casuals</option>
               <option value="Two piece">Two piece</option>
-              <option value="Senegal designs">Senegal designs</option>
+              <option value="Print & Press">Print & Press</option>
               <option value="Something else">Something else</option>
             </select>
           </div>
 
           <div class="field">
             <label for="message">Your message</label>
-            <textarea
-              id="message"
-              name="message"
-              rows="6"
-              placeholder="Tell us what you would like us to make..."
-              required
-            ></textarea>
+            <textarea id="message" name="message" rows="6" placeholder="Tell us what you would like us to make..." required></textarea>
           </div>
 
-          <button class="btn btn--primary" type="submit">
-            Send message
-          </button>
-
+          <button class="btn btn--primary" type="submit">Send message</button>
+          <p class="form-status" id="form-status" role="status"></p>
         </form>
         <!-- END CONTACT FORM -->
-
       </div>
     </section>
   </main>
@@ -171,12 +100,10 @@
   <footer class="site-footer">
     <div class="wrap">
       <div class="footer-grid">
-
         <div>
           <h3>Olams Apparel</h3>
           <p>We make available luxury. Your decency is our priority.</p>
         </div>
-
         <div>
           <h3>Pages</h3>
           <ul>
@@ -185,36 +112,16 @@
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
-
         <div>
           <h3>Get in touch</h3>
           <ul>
-            <li>
-              <a href="https://wa.me/2348128460590">
-                WhatsApp: +2348128460590
-              </a>
-            </li>
-            <li>
-              <a href="https://instagram.com/olamsapparel"
-                 target="_blank"
-                 rel="noopener noreferrer">
-                Instagram: @olamsapparel
-              </a>
-            </li>
-            <li>
-              <a href="mailto:mubarakolodan@gmail.com">
-                mubarakolodan@gmail.com
-              </a>
-            </li>
+            <li><a href="https://wa.me/2348128460590">WhatsApp: +2348128460590</a></li>
+            <li><a href="https://instagram.com/olamsapparel" target="_blank" rel="noopener noreferrer">Instagram: @olamsapparel</a></li>
+            <li><a href="mailto:mubarakolodan@gmail.com">mubarakolodan@gmail.com</a></li>
           </ul>
         </div>
-
       </div>
-
-      <p class="copyright">
-        &copy; <span id="year">2026</span>
-        Olam's Apparel. All rights reserved.
-      </p>
+      <p class="copyright">&copy; <span id="year">2026</span> Olam's Apparel. All rights reserved.</p>
     </div>
   </footer>
 
