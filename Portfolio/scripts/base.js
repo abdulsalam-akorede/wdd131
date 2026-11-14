@@ -2,15 +2,49 @@
 
 const siteInfo = {
   name: "Abdulsalam Oke",
-  email: "abdulsalamakorede40@gmail.com",
+  email: "akoredeabdulsalam330@gmail.com",
   linkedin: "https://www.linkedin.com/in/abdulsalam-oke-72a12b3a6/",
   github: "https://github.com/abdulsalam-akorede",
   resume: "files/Abdulsalam-Oke-Resume.pdf",
   location: "Lagos, Nigeria. Available for remote work."
 };
 
-// Paste your web form endpoint here (for example a Formspree URL).
-const FORM_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+const form = document.getElementById('form');
+const submitBtn = form.querySelector('button[type="submit"]');
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    formData.append("access_key", "1e16cbfb-8f90-437c-8f29-1955353464f5");
+
+    const originalText = submitBtn.textContent;
+
+    submitBtn.textContent = "Sending...";
+    submitBtn.disabled = true;
+
+    try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert("Success! Your message has been sent.");
+            form.reset();
+        } else {
+            alert("Error: " + data.message);
+        }
+
+    } catch (error) {
+        alert("Something went wrong. Please try again.");
+    } finally {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    }
+});
 
 const navLinks = [
   { label: "Home", href: "index.html", page: "home" },
