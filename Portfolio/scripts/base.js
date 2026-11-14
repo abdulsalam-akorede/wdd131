@@ -1,3 +1,4 @@
+
 // ---------- Site settings ----------
 
 const siteInfo = {
@@ -8,43 +9,6 @@ const siteInfo = {
   resume: "files/Abdulsalam-Oke-Resume.pdf",
   location: "Lagos, Nigeria. Available for remote work."
 };
-
-const form = document.getElementById('form');
-const submitBtn = form.querySelector('button[type="submit"]');
-
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(form);
-    formData.append("access_key", "1e16cbfb-8f90-437c-8f29-1955353464f5");
-
-    const originalText = submitBtn.textContent;
-
-    submitBtn.textContent = "Sending...";
-    submitBtn.disabled = true;
-
-    try {
-        const response = await fetch("https://api.web3forms.com/submit", {
-            method: "POST",
-            body: formData
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-            alert("Success! Your message has been sent.");
-            form.reset();
-        } else {
-            alert("Error: " + data.message);
-        }
-
-    } catch (error) {
-        alert("Something went wrong. Please try again.");
-    } finally {
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-    }
-});
 
 const navLinks = [
   { label: "Home", href: "index.html", page: "home" },
@@ -134,7 +98,9 @@ function mediaMarkup(project) {
 function handleBrokenImages(container) {
   container.querySelectorAll(".project-media img").forEach((img) => {
     const showPlaceholder = () => {
-      img.parentElement.classList.add("placeholder");
+      if (img.parentElement) {
+        img.parentElement.classList.add("placeholder");
+      }
       img.remove();
     };
 
@@ -146,7 +112,7 @@ function handleBrokenImages(container) {
   });
 }
 
-// ---------- Nav ----------
+// ---------- Navigation ----------
 
 function buildNav(activePage) {
   const header = document.querySelector("#site-header");
@@ -155,14 +121,32 @@ function buildNav(activePage) {
   const linkItems = navLinks
     .map((link) => {
       const isActive = link.page === activePage;
-      return `<li><a href="${link.href}" class="${isActive ? "active" : ""}"${isActive ? ' aria-current="page"' : ""}>${link.label}</a></li>`;
+
+      return `
+        <li>
+          <a href="${link.href}"
+             class="${isActive ? "active" : ""}"
+             ${isActive ? 'aria-current="page"' : ""}>
+            ${link.label}
+          </a>
+        </li>
+      `;
     })
     .join("");
 
   header.innerHTML = `
     <div class="nav-container">
       <a href="index.html" class="logo">${siteInfo.name}</a>
-      <button id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">&#9776;</button>
+
+      <button
+        id="menu-toggle"
+        class="menu-toggle"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="main-nav">
+        &#9776;
+      </button>
+
       <nav id="main-nav" aria-label="Main">
         <ul>${linkItems}</ul>
       </nav>
@@ -172,9 +156,18 @@ function buildNav(activePage) {
   const toggle = document.querySelector("#menu-toggle");
   const nav = document.querySelector("#main-nav");
 
+  if (!toggle || !nav) return;
+
   toggle.addEventListener("click", () => {
     const isOpen = nav.classList.toggle("open");
     toggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  nav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+    });
   });
 }
 
@@ -191,25 +184,41 @@ function buildFooter() {
   footer.innerHTML = `
     <div class="container">
       <div class="footer-grid">
+
         <div>
           <p class="footer-brand">${siteInfo.name}</p>
           <p>Software development student building responsive websites.</p>
         </div>
+
         <div>
           <p class="footer-title">Pages</p>
           <ul class="footer-links">${pageLinks}</ul>
         </div>
+
         <div>
           <p class="footer-title">Connect</p>
           <ul class="footer-links">
             <li><a href="mailto:${siteInfo.email}">Email</a></li>
-            <li><a href="${siteInfo.linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-            <li><a href="${siteInfo.github}" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li>
+              <a href="${siteInfo.linkedin}" target="_blank" rel="noopener noreferrer">
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a href="${siteInfo.github}" target="_blank" rel="noopener noreferrer">
+                GitHub
+              </a>
+            </li>
             <li><a href="${siteInfo.resume}" download>Resume</a></li>
           </ul>
         </div>
+
       </div>
-      <p class="footer-bottom">&copy; ${new Date().getFullYear()} ${siteInfo.name}. <a href="references.html">References</a></p>
+
+      <p class="footer-bottom">
+        &copy; ${new Date().getFullYear()} ${siteInfo.name}.
+        <a href="references.html">References</a>
+      </p>
     </div>
   `;
 }
@@ -239,7 +248,7 @@ function fillContactLinks() {
 
 function renderFeaturedProjects() {
   const container = document.querySelector("#featured-projects");
-  if (!container) return;
+  if (!container || projects.length === 0) return;
 
   const [main, ...others] = projects.slice(0, 3);
 
@@ -257,11 +266,14 @@ function renderFeaturedProjects() {
       (project) => `
         <article class="project-card">
           ${mediaMarkup(project)}
+
           <div class="project-card-content">
             <p class="project-tag">${project.category}</p>
             <h3>${project.name}</h3>
             <p>${project.summary}</p>
-            <a href="projects.html?project=${project.id}" class="project-link">View details</a>
+            <a href="projects.html?project=${project.id}" class="project-link">
+              View details
+            </a>
           </div>
         </article>
       `
@@ -271,17 +283,23 @@ function renderFeaturedProjects() {
   container.innerHTML = `
     <article class="feature">
       ${mediaMarkup(main)}
+
       <div class="feature-content">
         <p class="project-tag">${main.category}</p>
         <h3>${main.name}</h3>
         <p>${main.summary}</p>
+
         <ul class="plain-list">${highlights}</ul>
+
         <div class="feature-actions">
           ${liveLink}
-          <a href="projects.html?project=${main.id}" class="btn btn-outline">Project details</a>
+          <a href="projects.html?project=${main.id}" class="btn btn-outline">
+            Project details
+          </a>
         </div>
       </div>
     </article>
+
     <div class="project-grid">${otherCards}</div>
   `;
 
@@ -304,11 +322,18 @@ function renderProjects(category = "All") {
       (project) => `
         <article class="project-card">
           ${mediaMarkup(project)}
+
           <div class="project-card-content">
             <p class="project-tag">${project.category}</p>
             <h3>${project.name}</h3>
             <p>${project.summary}</p>
-            <button class="project-link" data-project-id="${project.id}">View details</button>
+
+            <button
+              type="button"
+              class="project-link"
+              data-project-id="${project.id}">
+              View details
+            </button>
           </div>
         </article>
       `
@@ -324,10 +349,11 @@ function setupProjectFilters() {
 
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
-      renderProjects(button.dataset.category);
+      renderProjects(button.dataset.category || "All");
 
       buttons.forEach((item) => {
         const isActive = item === button;
+
         item.classList.toggle("active", isActive);
         item.setAttribute("aria-pressed", String(isActive));
       });
@@ -342,15 +368,21 @@ let lastFocusedElement = null;
 function openProjectModal(projectId) {
   const modal = document.querySelector("#project-modal");
   const modalBody = document.querySelector("#modal-body");
-  const project = projects.find((item) => item.id === Number(projectId));
+  const closeButton = document.querySelector("#modal-close");
 
-  if (!modal || !modalBody || !project) return;
+  const project = projects.find(
+    (item) => item.id === Number(projectId)
+  );
+
+  if (!modal || !modalBody || !closeButton || !project) return;
 
   const highlights = project.highlights
     .map((item) => `<li>${item}</li>`)
     .join("");
 
-  const tools = project.tools.map((tool) => `<li>${tool}</li>`).join("");
+  const tools = project.tools
+    .map((tool) => `<li>${tool}</li>`)
+    .join("");
 
   const links = project.links
     .map(
@@ -361,23 +393,31 @@ function openProjectModal(projectId) {
 
   modalBody.innerHTML = `
     <p class="project-tag">${project.category}</p>
+
     <h2 id="modal-title">${project.name}</h2>
+
     <p>${project.details}</p>
+
     <h3>What I built</h3>
     <ul class="plain-list">${highlights}</ul>
+
     <h3>Tools</h3>
     <ul class="modal-tools">${tools}</ul>
+
     <div class="modal-actions">${links}</div>
   `;
 
   lastFocusedElement = document.activeElement;
+
   modal.classList.add("open");
   modal.setAttribute("aria-hidden", "false");
-  document.querySelector("#modal-close").focus();
+
+  closeButton.focus();
 }
 
 function closeProjectModal() {
   const modal = document.querySelector("#project-modal");
+
   if (!modal || !modal.classList.contains("open")) return;
 
   modal.classList.remove("open");
@@ -395,34 +435,57 @@ function setupProjectModal() {
 
   if (!modal || !closeButton || !grid) return;
 
-  // One listener on the grid keeps working after the filters re-render the cards.
+  // Event delegation keeps working after project filtering.
   grid.addEventListener("click", (event) => {
-    const button = event.target.closest(".project-link");
-    if (button) openProjectModal(button.dataset.projectId);
+    const target = event.target;
+
+    if (!(target instanceof Element)) return;
+
+    const button = target.closest("[data-project-id]");
+
+    if (button) {
+      openProjectModal(button.dataset.projectId);
+    }
   });
 
   closeButton.addEventListener("click", closeProjectModal);
 
   modal.addEventListener("click", (event) => {
-    if (event.target === modal) closeProjectModal();
+    if (event.target === modal) {
+      closeProjectModal();
+    }
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeProjectModal();
+    if (event.key === "Escape") {
+      closeProjectModal();
+    }
   });
 
-  const requestedId = new URLSearchParams(window.location.search).get("project");
-  if (requestedId) openProjectModal(requestedId);
+  const requestedId = new URLSearchParams(
+    window.location.search
+  ).get("project");
+
+  if (requestedId) {
+    openProjectModal(requestedId);
+  }
 }
+
+// ---------- Project visit counter ----------
 
 function trackProjectVisits() {
   const message = document.querySelector("#project-visit-count");
   if (!message) return;
 
   try {
-    const visits = (Number(localStorage.getItem("projectVisits")) || 0) + 1;
-    localStorage.setItem("projectVisits", visits);
-    message.textContent = `You have viewed this page ${visits} time${visits === 1 ? "" : "s"}.`;
+    const visits =
+      (Number(localStorage.getItem("projectVisits")) || 0) + 1;
+
+    localStorage.setItem("projectVisits", String(visits));
+
+    message.textContent =
+      `You have viewed this page ${visits} time${visits === 1 ? "" : "s"}.`;
+
   } catch (error) {
     message.textContent = "";
   }
@@ -430,19 +493,31 @@ function trackProjectVisits() {
 
 // ---------- Contact form ----------
 
-function setFormStatus(text, type) {
+// Your Web3Forms access key
+const WEB3FORMS_ACCESS_KEY = "1e16cbfb-8f90-437c-8f29-1955353464f5";
+
+function setFormStatus(message, type) {
   const status = document.querySelector("#form-message");
   if (!status) return;
 
-  status.textContent = text;
-  status.className = `form-message ${type}`;
+  status.textContent = message;
+  status.className = "form-message";
+
+  if (type) {
+    status.classList.add(type);
+  }
 }
 
 function setupContactForm() {
   const form = document.querySelector("#contact-form");
   if (!form) return;
 
-  const submitButton = document.querySelector("#form-submit");
+  const submitButton = form.querySelector('button[type="submit"]');
+
+  if (!submitButton) {
+    console.error("Contact form submit button was not found.");
+    return;
+  }
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -452,47 +527,104 @@ function setupContactForm() {
       return;
     }
 
-    if (FORM_ENDPOINT.includes("YOUR_FORM_ID")) {
-      setFormStatus(`The form is not connected yet. Please email me at ${siteInfo.email}.`, "error");
+    const formData = new FormData(form);
+
+    // Check the honeypot field to help block spam.
+    const honeypot = String(formData.get("_gotcha") || "").trim();
+
+    if (honeypot !== "") {
+      form.reset();
       return;
     }
 
+    const originalButtonText = submitButton.textContent;
+
     submitButton.disabled = true;
     submitButton.textContent = "Sending...";
+
     setFormStatus("", "");
 
     try {
-      const response = await fetch(FORM_ENDPOINT, {
-        method: "POST",
-        body: new FormData(form),
-        headers: { Accept: "application/json" }
-      });
+      // Add your Web3Forms access key.
+      formData.set("access_key", WEB3FORMS_ACCESS_KEY);
 
-      if (response.ok) {
+      // Preserve the subject entered by the visitor.
+      const visitorSubject = String(
+        formData.get("subject") || ""
+      ).trim();
+
+      formData.set(
+        "subject",
+        visitorSubject || "New message from your portfolio website"
+      );
+
+      formData.set(
+        "from_name",
+        "Abdulsalam Oke Portfolio"
+      );
+
+      const response = await fetch(
+        "https://api.web3forms.com/submit",
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json"
+          }
+        }
+      );
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
         form.reset();
-        setFormStatus("Thank you. Your message was sent and I will reply soon.", "success");
+
+        setFormStatus(
+          "Thank you! Your message has been sent successfully. I'll get back to you soon.",
+          "success"
+        );
       } else {
-        setFormStatus(`Your message could not be sent. Please email me at ${siteInfo.email}.`, "error");
+        console.error("Web3Forms submission failed:", result);
+
+        setFormStatus(
+          `Your message could not be sent. Please email me at ${siteInfo.email}.`,
+          "error"
+        );
       }
+
     } catch (error) {
-      setFormStatus(`Something went wrong. Please check your connection or email me at ${siteInfo.email}.`, "error");
+      console.error("Contact form error:", error);
+
+      setFormStatus(
+        `Something went wrong. Please try again or email me at ${siteInfo.email}.`,
+        "error"
+      );
+
     } finally {
       submitButton.disabled = false;
-      submitButton.textContent = "Send message";
+      submitButton.textContent = originalButtonText;
     }
   });
 }
 
-// ---------- Init ----------
+// ---------- Initialize website ----------
 
 document.addEventListener("DOMContentLoaded", () => {
   buildNav(document.body.dataset.page);
+
   buildFooter();
+
   fillContactLinks();
+
   renderFeaturedProjects();
+
   renderProjects();
+
   setupProjectFilters();
+
   setupProjectModal();
+
   trackProjectVisits();
+
   setupContactForm();
 });
