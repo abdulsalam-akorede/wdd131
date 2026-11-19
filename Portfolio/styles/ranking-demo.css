@@ -17,10 +17,10 @@ h2{font-size:1.25rem;margin:0 0 14px}
 .field{display:flex;flex-direction:column;gap:4px;min-width:0}
 .field.wide{grid-column:1/-1}
 label{font-weight:500;font-size:.9rem}
-input{width:100%;min-width:0;font:inherit;padding:9px 10px;border:1px solid #9AA3B2;border-radius:6px;background:var(--white);color:var(--charcoal)}
-input:focus-visible,.btn:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
-.actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:10px}
-.btn{font:inherit;font-weight:600;padding:9px 16px;border-radius:6px;border:2px solid var(--navy);background:var(--white);color:var(--navy);cursor:pointer}
+input,select{width:100%;min-width:0;font:inherit;padding:9px 10px;border:1px solid #9AA3B2;border-radius:6px;background:var(--white);color:var(--charcoal)}
+input:focus-visible,select:focus-visible,.btn:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.btn{display:inline-block;font:inherit;font-weight:600;padding:9px 16px;border-radius:6px;border:2px solid var(--navy);background:var(--white);color:var(--navy);cursor:pointer}
 .btn.primary{background:var(--navy);color:var(--white)}
 .btn:disabled{opacity:.5;cursor:not-allowed}
 .btn:not(:disabled):hover{background:var(--gold);border-color:var(--gold);color:var(--navy)}
