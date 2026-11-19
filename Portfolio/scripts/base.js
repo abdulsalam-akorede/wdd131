@@ -22,24 +22,6 @@ const navLinks = [
 const projects = [
   {
     id: 1,
-    name: "Olam's Apparel",
-    category: "Web development",
-    summary: "A multi-page website for a Lagos fashion brand, built with separate HTML, CSS, and JavaScript files.",
-    details: "A responsive website for Olam's Apparel, a Lagos brand that makes agbada, caftans, casuals, two-piece outfits, and Senegal wear. The site presents the brand's story and offerings and gives customers an easy way to get in touch.",
-    highlights: [
-      "Home, About, and Contact pages with shared navigation",
-      "Colour palette and tagline taken from the business identity",
-      "Responsive layout for phones, tablets, and desktops",
-      "Contact form connected to a web form service"
-    ],
-    tools: ["HTML", "CSS", "JavaScript"],
-    image: "images/olams-apparel.jpg",
-    links: [
-      { label: "Open live site", url: "../Olams-apparel/index.html" }
-    ]
-  },
-  {
-    id: 2,
     name: "Examination Management and Ranking System",
     category: "Web development",
     summary: "A Python application that calculates results, ranks everyone by total score and reports class statistics, with a live demo you can try.",
@@ -56,6 +38,24 @@ const projects = [
     links: [
       { label: "Try the live demo", url: "ranking-demo.html" },
       { label: "View source on GitHub", url: "https://github.com/abdulsalam-akorede/examination-ranking-system" }
+    ]
+  },
+  {
+    id: 2,
+    name: "Professional Portfolio Website",
+    category: "Web development",
+    summary: "The site you are viewing, designed and built to present my work, results and experience.",
+    details: "My professional portfolio, designed and built with HTML, CSS and JavaScript and published on GitHub Pages. A shared JavaScript file builds the navigation, footer and project cards on every page, so the site is easy to update.",
+    highlights: [
+      "Projects rendered from a JavaScript array with category filters",
+      "Accessible project dialog and mobile navigation",
+      "Contact form connected to a web form service",
+      "Visit counter that uses localStorage"
+    ],
+    tools: ["HTML", "CSS", "JavaScript", "GitHub Pages"],
+    image: "images/portfolio.jpg",
+    links: [
+      { label: "View source on GitHub", url: "https://github.com/abdulsalam-akorede/wdd131" }
     ]
   },
   {
@@ -91,20 +91,20 @@ const projects = [
   },
   {
     id: 5,
-    name: "Professional Portfolio Website",
+    name: "Olam's Apparel",
     category: "Web development",
-    summary: "The site you are viewing, designed and built to present my work, results and experience.",
-    details: "My professional portfolio, designed and built with HTML, CSS and JavaScript and published on GitHub Pages. A shared JavaScript file builds the navigation, footer and project cards on every page, so the site is easy to update.",
+    summary: "A multi-page website for a Lagos fashion brand, built with separate HTML, CSS, and JavaScript files.",
+    details: "A responsive website for Olam's Apparel, a Lagos brand that makes agbada, caftans, casuals, two-piece outfits, and Senegal wear. The site presents the brand's story and offerings and gives customers an easy way to get in touch.",
     highlights: [
-      "Projects rendered from a JavaScript array with category filters",
-      "Accessible project dialog and mobile navigation",
-      "Contact form connected to a web form service",
-      "Visit counter that uses localStorage"
+      "Home, About, and Contact pages with shared navigation",
+      "Colour palette and tagline taken from the business identity",
+      "Responsive layout for phones, tablets, and desktops",
+      "Contact form connected to a web form service"
     ],
-    tools: ["HTML", "CSS", "JavaScript", "GitHub Pages"],
-    image: "images/portfolio.jpg",
+    tools: ["HTML", "CSS", "JavaScript"],
+    image: "images/olams-apparel.jpg",
     links: [
-      { label: "View source on GitHub", url: "https://github.com/abdulsalam-akorede/wdd131" }
+      { label: "Open live site", url: "../Olams-apparel/index.html" }
     ]
   }
 ];
