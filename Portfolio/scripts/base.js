@@ -23,7 +23,7 @@ const projects = [
   {
     id: 1,
     name: "Olam's Apparel",
-    category: "Client Website",
+    category: "Web development",
     summary: "A multi-page website for a Lagos fashion brand, built with separate HTML, CSS, and JavaScript files.",
     details: "A responsive website for Olam's Apparel, a Lagos brand that makes agbada, caftans, casuals, two-piece outfits, and Senegal wear. The site presents the brand's story and offerings and gives customers an easy way to get in touch.",
     highlights: [
@@ -33,17 +33,68 @@ const projects = [
       "Contact form connected to a web form service"
     ],
     tools: ["HTML", "CSS", "JavaScript"],
-    image: "images/olams-apparel.webp",
+    image: "images/olams-apparel.jpg",
     links: [
       { label: "Open live site", url: "../Olams-apparel/index.html" }
     ]
   },
   {
     id: 2,
-    name: "Personal Portfolio",
-    category: "Coursework",
-    summary: "The site you are viewing, built as my WDD 131 course project.",
-    details: "My professional portfolio, built for BYU-Idaho's Dynamic Web Fundamentals course. It uses a shared JavaScript file to build the navigation, footer, and project cards on every page.",
+    name: "Examination Management and Ranking System",
+    category: "Web development",
+    summary: "A Python application that calculates results, ranks everyone by total score and reports class statistics, with a live demo you can try.",
+    details: "A Python application for managing examination results. It records scores for four subjects, calculates totals and averages, applies a pass mark of 50, ranks results by total score and produces a report with class statistics. Records are saved to a CSV file, and the calculation logic is covered by automated pytest tests. The live demo runs the same Python functions in your browser.",
+    highlights: [
+      "Add, search and edit records with input validation (scores must be 0 to 100)",
+      "Totals, averages and Pass or Fail status from reusable functions",
+      "Ranked report with class average, passed and failed counts, and highest and lowest scorers",
+      "Records saved to and loaded from CSV files",
+      "Calculation, ranking and search logic covered by pytest tests"
+    ],
+    tools: ["Python", "pytest", "CSV", "JavaScript"],
+    image: "images/ranking-demo.jpg",
+    links: [
+      { label: "Try the live demo", url: "ranking-demo.html" },
+      { label: "View source on GitHub", url: "https://github.com/abdulsalam-akorede/examination-ranking-system" }
+    ]
+  },
+  {
+    id: 3,
+    name: "Project Go Tech Brand Identity",
+    category: "Branding",
+    summary: "A complete brand identity and design system for a digital-skills programme, created for a freelance client.",
+    details: "A brand identity for Project Go Tech, a digital-skills programme with the tagline \"Digitize What You Know\". I designed the logo, colour system, typography and graphic language in CorelDRAW, then built a reusable system of social media templates so the brand stays consistent across every post and flyer.",
+    highlights: [
+      "Logo with a \"G\" ring mark and an ascending arrow, plus a wordmark and tagline",
+      "Six-colour palette and a Poppins and Inter type pairing",
+      "Graphic elements, an eight-icon set and photography direction",
+      "Twelve reusable social media templates for announcements, tips, spotlights and events"
+    ],
+    tools: ["CorelDRAW", "Brand design", "Social media design"],
+    image: "images/project-go-tech.webp",
+    links: []
+  },
+  {
+    id: 4,
+    name: "Crestline Brands Identity",
+    category: "Branding",
+    summary: "A brand identity for a design and print business, with a logo and colour system built in CorelDRAW.",
+    details: "The brand identity for Crestline Brands, a design and print business. The work covers a navy, gold and white colour system, a Montserrat and Poppins type pairing, and a flat logo developed in CorelDRAW.",
+    highlights: [
+      "Navy, gold and white colour system",
+      "Montserrat and Poppins typography pairing",
+      "Flat vector logo developed in CorelDRAW"
+    ],
+    tools: ["CorelDRAW", "Brand design"],
+    image: "images/crestline-brands.webp",
+    links: []
+  },
+  {
+    id: 5,
+    name: "Professional Portfolio Website",
+    category: "Web development",
+    summary: "The site you are viewing, designed and built to present my work, results and experience.",
+    details: "My professional portfolio, designed and built with HTML, CSS and JavaScript and published on GitHub Pages. A shared JavaScript file builds the navigation, footer and project cards on every page, so the site is easy to update.",
     highlights: [
       "Projects rendered from a JavaScript array with category filters",
       "Accessible project dialog and mobile navigation",
@@ -51,30 +102,12 @@ const projects = [
       "Visit counter that uses localStorage"
     ],
     tools: ["HTML", "CSS", "JavaScript", "GitHub Pages"],
-    image: "images/portfolio.webp",
+    image: "images/portfolio.jpg",
     links: [
       { label: "View source on GitHub", url: "https://github.com/abdulsalam-akorede/wdd131" }
     ]
-  },
-  {
-    id: 3,
-    name: "WDD 131 Coursework",
-    category: "Coursework",
-    summary: "Course projects on responsive layouts, DOM manipulation, forms, and events.",
-    details: "A collection of work from Dynamic Web Fundamentals, including a site plan, responsive pages, and JavaScript features that respond to user actions.",
-    highlights: [
-      "Site plan covering pages, palette, fonts, and navigation",
-      "Pages checked against the course audit",
-      "JavaScript functions, conditionals, and array methods in use"
-    ],
-    tools: ["HTML", "CSS", "JavaScript"],
-    image: "images/wdd131.webp",
-    links: [
-      { label: "View on GitHub", url: "https://github.com/abdulsalam-akorede/wdd131" }
-    ]
   }
 ];
-
 // ---------- Helpers ----------
 
 function getInitials(name) {

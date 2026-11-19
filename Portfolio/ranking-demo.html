@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Examination Ranking System | Abdulsalam Oke</title>
+  <meta name="description" content="A live demo of a Python examination management and ranking system by Abdulsalam Oke. The Python code runs in your browser.">
+  <meta name="author" content="Abdulsalam Oke">
+  <meta name="theme-color" content="#0B1F3B">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/ranking-demo.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top">
+    <div class="wrap">
+      <a class="back" href="projects.html">Back to projects</a>
+      <h1>Examination Ranking System</h1>
+      <p class="lead">A Python application that totals scores, decides pass or fail, ranks everyone and reports class statistics. The Python code below runs live in your browser.</p>
+      <p id="status" class="status" role="status" aria-live="polite">Loading Python…</p>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section aria-labelledby="add-h">
+      <h2 id="add-h">Add a record</h2>
+      <form id="add-form" novalidate>
+        <div class="field wide"><label for="name">Name</label><input id="name" type="text" autocomplete="off"></div>
+        <div class="field"><label for="s0">Math</label><input id="s0" type="number" min="0" max="100" step="any"></div>
+        <div class="field"><label for="s1">English</label><input id="s1" type="number" min="0" max="100" step="any"></div>
+        <div class="field"><label for="s2">Science</label><input id="s2" type="number" min="0" max="100" step="any"></div>
+        <div class="field"><label for="s3">Social Studies</label><input id="s3" type="number" min="0" max="100" step="any"></div>
+        <div class="actions">
+          <button type="submit" class="btn primary" disabled>Add record</button>
+          <button type="button" id="load-sample" class="btn" disabled>Load sample data</button>
+          <button type="button" id="save-csv" class="btn" disabled>Save records (CSV)</button>
+          <button type="button" id="cancel-edit" class="btn" hidden>Cancel edit</button>
+          <button type="button" id="clear" class="btn">Clear all</button>
+        </div>
+        <p id="form-msg" class="msg" role="alert"></p>
+      </form>
+    </section>
+
+    <section aria-labelledby="report-h">
+      <h2 id="report-h">Examination report</h2>
+      <div id="stats" class="stats" hidden></div>
+      <div class="table-wrap">
+        <table id="report">
+          <caption class="sr">Students ranked by total score</caption>
+          <thead><tr><th scope="col">Position</th><th scope="col">Name</th><th scope="col">Total</th><th scope="col">Average</th><th scope="col">Status</th><th scope="col">Edit</th></tr></thead>
+          <tbody id="report-body"></tbody>
+        </table>
+      </div>
+      <p id="empty" class="empty">No records yet. Add a record or load the sample data.</p>
+    </section>
+
+    <section aria-labelledby="search-h">
+      <h2 id="search-h">Search a record</h2>
+      <form id="search-form" class="inline" novalidate>
+        <label for="search-name">Student name</label>
+        <input id="search-name" type="text" autocomplete="off">
+        <button type="submit" class="btn" disabled>Search</button>
+      </form>
+      <p id="search-result" class="msg" role="status"></p>
+    </section>
+
+    <section aria-labelledby="test-h">
+      <h2 id="test-h">Checks on the calculation functions</h2>
+      <p>These run the same checks as my pytest tests: totals, averages, the pass mark, ranking and search.</p>
+      <button type="button" id="run-tests" class="btn" disabled>Run the checks</button>
+      <ul id="test-list" class="tests"></ul>
+    </section>
+
+    <section aria-labelledby="code-h">
+      <h2 id="code-h">The Python behind it</h2>
+      <details>
+        <summary>Show the Python code</summary>
+        <pre><code id="code-view"></code></pre>
+      </details>
+    </section>
+  </main>
+
+  <footer class="wrap foot"><p>Built by Abdulsalam Oke with Python, HTML, CSS and JavaScript.</p></footer>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
+  <script src="scripts/ranking-demo.js"></script>
+</body>
+</html>
