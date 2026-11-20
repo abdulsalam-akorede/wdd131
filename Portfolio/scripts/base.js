@@ -6,7 +6,7 @@ const siteInfo = {
   email: "akoredeabdulsalam330@gmail.com",
   linkedin: "https://www.linkedin.com/in/abdulsalam-oke-72a12b3a6/",
   github: "https://github.com/abdulsalam-akorede",
-  resume: "files/Abdulsalam-Oke-Resume.pdf",
+  resume: "files/Abdulsalam-Oke-CV.pdf",
   location: "Lagos, Nigeria. Available for remote work."
 };
 
